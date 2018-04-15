@@ -1,6 +1,7 @@
 % PoPL 8 Queens Assignment.
 % Does brute force on reduced number of permutations.
 % Create a list of pairs (8), store row number of queen in each case.
+:-initialization(fp).
 % I vary the Row number of queens to find permutations, col number is fixed!
 fp:-read(InY),
 	read(InX),
