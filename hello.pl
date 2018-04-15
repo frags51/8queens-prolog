@@ -6,9 +6,9 @@
 fp:-read_integer(InY),
 	read_integer(InX),
 	listIn({InX, InY}, [{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]),
-	valid([{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]),
-	oLoop(1,[X1|[X2|[X3|[X4|[X5|[X6|[X7|[X8]]]]]]]]), % That's how lists are made :P
-	write('\b'). % To remove the last new line.
+	valid([{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]) -> % In case valud is found
+	oLoop(1,[X1|[X2|[X3|[X4|[X5|[X6|[X7|[X8]]]]]]]]), write('\b'); 
+	write('IMPOSSIBLE'). % In case valid is not found
 
 % [{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]
 
