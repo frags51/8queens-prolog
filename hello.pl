@@ -2,18 +2,13 @@
 % Does brute force on reduced number of permutations.
 % Create a list of pairs (8), store row number of queen in each case.
 % I vary the Row number of queens to find permutations, col number is fixed!
-fp:-read(InX),
-	read(InY),
+fp:-read(InY),
+	read(InX),
 	listIn({InX, InY}, [{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]),
 	valid([{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]),
-	write(X1),
-	write(X2),
-	write(X3),
-	write(X4),
-	write(X5),
-	write(X6),
-	write(X7),
-	write(X8).
+	oLoop(1,[X1|[X2|[X3|[X4|[X5|[X6|[X7|[X8]]]]]]]]), % That's how lists are made :P
+	write('\b'). % To remove the last new line.
+
 % [{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]
 
 % Is the Queen at XX, YY safe from other queens?
@@ -34,4 +29,15 @@ isIn(A, [X|Tail]):- isIn(A, Tail).
 listIn({Ix, Iy}, [{Ix,Iy}|Tail]).
 listIn({Ix, Iy}, [{Rx, Ry}|Tail]):- listIn({Ix, Iy}, Tail).
 
-loop(Ctr):- Ctr>0, writeln(Ctr), loop(Ctr-1). 
+% Loops while Ctr < 9
+iLoop(_,_,[]).
+iLoop(_,9,_).
+iLoop(OCtr, Ctr, [X|Tail]):- Ctr<9, 
+	OCtr is X -> write('1'), write(' '), Y is Ctr+1, iLoop(OCtr, Y, Tail); 
+	write('0'), write(' '), Y is Ctr+1, iLoop(OCtr, Y, Tail).
+
+% Outer loop
+oLoop(_, []).
+oLoop(9, _).
+oLoop(OCtr, [H|Tail]):- OCtr<9, iLoop(OCtr, 1, [H|Tail]), write('\b'), write('\n'),X is OCtr+1, oLoop(X, [H|Tail]).
+
