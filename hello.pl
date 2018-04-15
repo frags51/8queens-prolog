@@ -30,5 +30,8 @@ valid([{X,Y} | Tail]):- valid(Tail), isIn(X, [1,2,3,4,5,6,7,8]), safe({X,Y}, Tai
 isIn(A, [A|Tail]).
 isIn(A, [X|Tail]):- isIn(A, Tail).
 
+% Validate list according to input.
 listIn({Ix, Iy}, [{Ix,Iy}|Tail]).
 listIn({Ix, Iy}, [{Rx, Ry}|Tail]):- listIn({Ix, Iy}, Tail).
+
+loop(Ctr):- Ctr>0, writeln(Ctr), loop(Ctr-1). 
