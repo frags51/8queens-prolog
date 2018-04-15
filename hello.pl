@@ -20,7 +20,7 @@ fp:-read(InX),
 % Relation b/w a set of pairs and a pair.
 safe(_, []). % Base Case
 % Note that Yy is fixed here to reduce permutations, only vary Xx , Yy is already different for each queen.
-safe({Xx, Yy}, [{X, Y}| Remaining]):- Xx =\= X, (Yy-Xx =\= Y-X), (Yy-Xx =\= X - Y), safe({X, Y}, Remaining).
+safe({Xx, Yy}, [{X, Y}| Remaining]):- Xx =\= X, ((Yy-Y) =\= (Xx-X)), ((Yy-Y) =\= (X - Xx)), safe({Xx, Yy}, Remaining).
 
 % Actually solve? Again, Y is supplieed with the list.
 valid([]). % Base Case
