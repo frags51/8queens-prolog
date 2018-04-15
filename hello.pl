@@ -3,8 +3,8 @@
 % Create a list of pairs (8), store row number of queen in each case.
 :-initialization(fp).
 % I vary the Row number of queens to find permutations, col number is fixed!
-fp:-read(InY),
-	read(InX),
+fp:-read_integer(InY),
+	read_integer(InX),
 	listIn({InX, InY}, [{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]),
 	valid([{X1,1},{X2,2}, {X3,3}, {X4, 4}, {X5, 5}, {X6, 6}, {X7, 7}, {X8, 8}]),
 	oLoop(1,[X1|[X2|[X3|[X4|[X5|[X6|[X7|[X8]]]]]]]]), % That's how lists are made :P
